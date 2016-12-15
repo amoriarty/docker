@@ -1,0 +1,33 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    docker-compose.yml                                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/12/15 09:58:29 by alegent           #+#    #+#              #
+#    Updated: 2016/12/15 14:44:26 by alegent          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+web:
+  image: nginx
+  ports:
+    - "8080:80"
+  volumes:
+    - "./conf/nginx:/etc/nginx/conf.d/"
+    - "./html:/var/www/html"
+  links:
+    - php
+
+php:
+  image: php:fpm
+  volumes:
+    - "./html:/var/www/html"
+  links:
+    - db
+
+db:
+  image: mariadb
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
