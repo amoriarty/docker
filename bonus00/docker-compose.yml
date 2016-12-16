@@ -6,7 +6,7 @@
 #    By: alegent <alegent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/15 09:58:29 by alegent           #+#    #+#              #
-#    Updated: 2016/12/15 16:58:02 by alegent          ###   ########.fr        #
+#    Updated: 2016/12/16 12:02:42 by alegent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ admin:
   image: phpmyadmin/phpmyadmin
   links:
     - db
+  environment:
+    - PMA_ABSOLUTE_URI=/phpmyadmin
 
 web:
   image: nginx
