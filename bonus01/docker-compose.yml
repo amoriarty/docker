@@ -1,7 +1,5 @@
 db:
-  image: mongo
-  environment:
-    - AUTH=true
+  build: mongo
 
 web:
   image: nginx
