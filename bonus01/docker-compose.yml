@@ -1,0 +1,30 @@
+db:
+  image: mongo
+  environment:
+    - AUTH=true
+
+web:
+  image: nginx
+  ports:
+    - "8080:80"
+  links:
+    - app
+    - admin
+  volumes:
+    - "./conf/nginx:/etc/nginx/conf.d"
+
+app:
+  build: app
+  links:
+    - db
+
+admin:
+  image: mongo-express
+  links:
+    - db:mongo
+  environment:
+    - ME_CONFIG_BASICAUTH_USERNAME="root"
+    - ME_CONFIG_BASICAUTH_PASSWORD="root"
+    - ME_CONFIG_MONGODB_ADMINUSERNAME="root"
+    - ME_CONFIG_MONGODB_ADMINPASSWORD="root"
+    - ME_CONFIG_SITE_BASEURL="/admin"

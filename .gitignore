@@ -1,2 +1,6 @@
 .DS_Store
 mission02/id_rsa.pub
+bonus01/app/node_modules
+bonus01/app/yarn.lock
+.*.swp
+**/.*.swp
