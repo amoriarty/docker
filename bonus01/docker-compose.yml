@@ -1,30 +1,21 @@
 mongo:
-  build: mongo
+  image: mongo
+  command: mongod --auth
   volumes:
-    - "./mongo/scripts:/scripts"
+    - "./database:/data/db"
+
+app:
+  build: app
+  volumes:
+    - "./scripts:/scripts"
+  links:
+    - mongo
 
 web:
-  image: nginx
+  image: nginx:alpine
   ports:
     - "8080:80"
   links:
     - app
-    - admin
   volumes:
     - "./conf/nginx:/etc/nginx/conf.d"
-
-app:
-  build: app
-  links:
-    - mongo
-
-admin:
-  image: mongo-express
-  links:
-    - mongo
-  environment:
-    - ME_CONFIG_BASICAUTH_USERNAME="root"
-    - ME_CONFIG_BASICAUTH_PASSWORD="root"
-    - ME_CONFIG_MONGODB_ADMINUSERNAME="root"
-    - ME_CONFIG_MONGODB_ADMINPASSWORD="root"
-    - ME_CONFIG_SITE_BASEURL="/admin"
