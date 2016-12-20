@@ -16,7 +16,7 @@ db:
     - MYSQL_ROOT_PASSWORD=root
 
 php:
-  image: php:fpm
+  image: php:fpm-alpine
   volumes:
     - "./html:/var/www/html"
   links:
@@ -30,7 +30,7 @@ admin:
     - PMA_ABSOLUTE_URI=/phpmyadmin
 
 web:
-  image: nginx
+  image: nginx:alpine
   ports:
     - "8080:80"
   volumes:
