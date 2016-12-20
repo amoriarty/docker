@@ -1,5 +1,7 @@
-db:
+mongo:
   build: mongo
+  volumes:
+    - "./mongo/scripts:/scripts"
 
 web:
   image: nginx
@@ -14,12 +16,12 @@ web:
 app:
   build: app
   links:
-    - db
+    - mongo
 
 admin:
   image: mongo-express
   links:
-    - db:mongo
+    - mongo
   environment:
     - ME_CONFIG_BASICAUTH_USERNAME="root"
     - ME_CONFIG_BASICAUTH_PASSWORD="root"

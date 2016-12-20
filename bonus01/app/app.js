@@ -3,7 +3,7 @@ var express = require("express");
 var app = express();
 var mongodb = require("mongodb").MongoClient;
 
-var url = 'mongodb://db:27017/app'
+var url = 'mongodb://app:app@mongo:27017/app'
 
 mongodb.connect(url, function(err, db) {
 	if (err) console.log("Error ", err);
