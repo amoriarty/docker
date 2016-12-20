@@ -2,7 +2,7 @@
 mission02/id_rsa.pub
 bonus01/app/node_modules
 bonus01/app/yarn.lock
+bonus01/database
+bonus00/database
 .*.swp
 **/.*.swp
-=======
-bonus00/database
