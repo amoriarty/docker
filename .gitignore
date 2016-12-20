@@ -4,3 +4,5 @@ bonus01/app/node_modules
 bonus01/app/yarn.lock
 .*.swp
 **/.*.swp
+=======
+bonus00/database
