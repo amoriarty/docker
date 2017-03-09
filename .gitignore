@@ -1,8 +1,12 @@
+# System files
 .DS_Store
+.*.swp
+**/.*.swp
+
+# Project files
 mission02/id_rsa.pub
+mission03/share
 bonus01/app/node_modules
 bonus01/app/yarn.lock
 bonus01/database
 bonus00/database
-.*.swp
-**/.*.swp
