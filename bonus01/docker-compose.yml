@@ -1,15 +1,8 @@
 mongo:
-  image: mongo
+  image: mongo:3.4.2
   command: mongod --auth
   volumes:
     - "./database:/data/db"
-
-app:
-  build: app
-  volumes:
-    - "./scripts:/scripts"
-  links:
-    - mongo
 
 web:
   image: nginx:alpine
