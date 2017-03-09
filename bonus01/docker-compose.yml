@@ -1,14 +1,26 @@
-mongo:
-  image: mongo:3.4.2
-  command: mongod --auth
-  volumes:
-    - "./database:/data/db"
+version: "3"
 
-web:
-  image: nginx:alpine
-  ports:
-    - "8080:80"
-  links:
-    - app
-  volumes:
-    - "./conf/nginx:/etc/nginx/conf.d"
+services:
+  mongo:
+    image: mongo:3.4.2
+    command: mongod --auth
+    volumes:
+      - "./database:/data/db"
+
+  nginx:
+    image: nginx:1.11.10-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - "./nginx:/etc/nginx/conf.d"
+    links:
+      - app
+
+  app:
+    build: app
+    depends_on: [ mongo ]
+    entrypoint: /app_runner/delay.sh
+    volumes: 
+      - "./app_runner:/app_runner"
+    links:
+      - mongo
