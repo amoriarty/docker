@@ -6,7 +6,8 @@
 # Project files
 mission02/id_rsa.pub
 mission03/share
+bonus00/database
 bonus01/app/node_modules
 bonus01/app/yarn.lock
 bonus01/database
-bonus00/database
+bonus02/html
